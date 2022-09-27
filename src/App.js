@@ -1,13 +1,13 @@
-import Header from "./Layout/Header";
-import Cart from './Cart/Cart'
-import './index.css'
+import Header from './Layout/Header/Header';
+import { Fragment } from "react";
+import Summary from "./Layout/Summary/Summary"
 
 function App() {
   return (
-    <div className='container'>
+    <Fragment>
       <Header />
-      <Cart />
-    </div>
+      <Summary />
+    </Fragment>
   )
 }
 
