@@ -1,8 +1,13 @@
 .mealsContainer {
     border: 2px solid black;
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.mealsContainer > .mealItem {
+.mealsContainer > .mealItemContainer {
     border: 2px solid black;
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
 }
