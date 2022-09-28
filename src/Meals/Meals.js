@@ -1,4 +1,5 @@
 import MealItem from "./MealItem"
+import './Meals.css'
 
 function Meals() {
 
@@ -30,9 +31,11 @@ function Meals() {
     ]
 
     return (
-        meals.map(meal => {
+        <div className="mealsContainer">
+            {meals.map(meal => {
             return <MealItem key={meal.id} item={meal.name} description={meal.description} price={meal.price} />
-        })
+        })}
+        </div>
     )
 
 }
