@@ -1,9 +1,14 @@
 import Modal from "../UI/Modal/Modal"
 
-function Cart() {
+function Cart(props) {
     const cartItems = <ul>{[{id: Math.random().toString(), name: 'pizza', price: '$20', amount: 2}].map(item => {
         return <li key={item.id}>{item.name}</li>
     })}</ul>
+
+    function cancelClickHandler(e) {
+        e.preventDefault()
+        props.isCancelClicked(true)
+    }
     return (
         <Modal>
             {cartItems}
@@ -12,7 +17,7 @@ function Cart() {
                 <span>$35</span>
             </div>
             <div>
-                <button>Cancel</button>
+                <button onClick={cancelClickHandler}>Cancel</button>
                 <button>Order</button>
             </div>
         </Modal>

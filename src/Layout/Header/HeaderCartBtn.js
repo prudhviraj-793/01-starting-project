@@ -1,9 +1,13 @@
 import CartIcon from "../../Cart/CartIcon"
 import './HeaderCartBtn.css'
 
-function HeaderCartBtn() {
+function HeaderCartBtn(props) {
+    function cartClickHandler(e) {
+        e.preventDefault()
+        props.isCartClicked(false)
+    }
     return(
-        <button className="button">
+        <button className="button" onClick={cartClickHandler}>
             <span className="icon"><CartIcon /></span>
             <span>Cart</span>
             <span className="badge">2</span>
