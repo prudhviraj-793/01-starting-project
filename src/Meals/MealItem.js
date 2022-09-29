@@ -1,13 +1,14 @@
 import InputForm from '../UI/InputForm.js/InputForm'
-import './Meals.css'
+import './MealItem.css'
+
 
 function MealItem(props) {
     return (
-        <div className='mealItemContainer'>
+        <div className='meal'>
             <div className="mealItem">
                 <h3>{props.item}</h3>
-                <h4>{props.description}</h4>
-                <h3>{props.price}</h3>
+                <div className='description'>{props.description}</div>
+                <div className='price'>{props.price}</div>
             </div>
             <div className='inputForm'>
                 <InputForm />

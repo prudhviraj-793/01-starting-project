@@ -1,11 +1,14 @@
-import { Fragment } from "react"
+import './InputForm.css'
 
 function InputForm() {
     return (
-        <Fragment>
-            <label>Amount</label> <input type='number' />
+        <div className="form">
+            <div className='input'>
+                <label>Amount</label>
+                <input type='number' required/>
+            </div>
             <button>+Add</button>
-        </Fragment>
+        </div>
     )
 }
 

@@ -1,8 +1,9 @@
 import Header from './Layout/Header/Header';
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Summary from "./Layout/Summary/Summary"
 import Meals from './Meals/Meals';
 import Cart from './Cart/Cart';
+import CartProvider from './UI/Context/CartProvider';
 
 function App() {
   const [state, setState] = useState(true)
@@ -12,13 +13,16 @@ function App() {
   function cartClickHandler(res) {
     setState(res)
   }
+
   return (
-    <Fragment>
-      {!state && <Cart isCancelClicked={isCancelClickedHandler} />}
-      <Header isCartClicked={cartClickHandler}/>
-      <Summary />
-      <Meals />
-    </Fragment>
+    <CartProvider>
+        {!state && <Cart isCancelClicked={isCancelClickedHandler} />}
+        <Header isCartClicked={cartClickHandler}/>
+        <Summary />
+        <main>
+          <Meals />
+        </main>
+    </CartProvider>
   )
 }
 

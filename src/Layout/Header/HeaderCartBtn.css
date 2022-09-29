@@ -12,9 +12,10 @@
     font-weight: bold;
   }
   
-  .button:hover,
-  .button:active {
-    background-color: #08ee59;
+.button:hover,
+.button:active {
+    background-color: darkorange;
+    color: white;
   }
   
   .icon {

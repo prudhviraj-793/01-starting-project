@@ -31,10 +31,11 @@ function Meals() {
     ]
 
     return (
-        <div className="mealsContainer">
+        <div className="meals">
+            <ul>
             {meals.map(meal => {
-            return <MealItem key={meal.id} item={meal.name} description={meal.description} price={meal.price} />
-        })}
+            return <li><MealItem key={meal.id} item={meal.name} description={meal.description} price={meal.price} /></li>})}
+            </ul>
         </div>
     )
 
