@@ -7,6 +7,7 @@ import CartProvider from './UI/Context/CartProvider';
 
 function App() {
   const [state, setState] = useState(true)
+  const [cartedItems, setCartedItems] = useState(0)
   function isCancelClickedHandler(res) {
     setState(res)
   }
@@ -14,10 +15,14 @@ function App() {
     setState(res)
   }
 
+  function updateCartHandler(res) {
+    setCartedItems(res)
+  }
+
   return (
-    <CartProvider>
+    <CartProvider updateCart={updateCartHandler}>
         {!state && <Cart isCancelClicked={isCancelClickedHandler} />}
-        <Header isCartClicked={cartClickHandler}/>
+        <Header cartedItems={cartedItems} isCartClicked={cartClickHandler}/>
         <Summary />
         <main>
           <Meals />
