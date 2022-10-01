@@ -11,7 +11,7 @@ function Header(props) {
         <Fragment>
             <header className="header">
                 <h1>ReactMeals</h1>
-                <HeaderCartBtn cartedItems={props.cartedItems} isCartClicked={isCartClickedHandler} />
+                <HeaderCartBtn cartedItemsCount={props.cartedItemsCount} isCartClicked={isCartClickedHandler} />
             </header>
             <div className="main-image">
                 <img src={image} alt='food' />

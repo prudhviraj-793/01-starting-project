@@ -12,7 +12,7 @@ function HeaderCartBtn(props) {
         <button className="button" onClick={cartClickHandler}>
             <span className="icon"><CartIcon /></span>
             <span>Cart</span>
-            <span className="badge">{props.cartedItems}</span>
+            <span className="badge">{props.cartedItemsCount}</span>
         </button>
     )
 

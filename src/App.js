@@ -6,8 +6,11 @@ import Cart from './Cart/Cart';
 import CartProvider from './UI/Context/CartProvider';
 
 function App() {
+
   const [state, setState] = useState(true)
-  const [cartedItems, setCartedItems] = useState(0)
+  const [cartedItemsCount, setCartedItemsCount] = useState(0)
+  const [cartedItems, setCartedItems] = useState([])
+
   function isCancelClickedHandler(res) {
     setState(res)
   }
@@ -16,13 +19,17 @@ function App() {
   }
 
   function updateCartHandler(res) {
-    setCartedItems(res)
+    setCartedItemsCount(res)
+  }
+
+  function cartedItemsHandler(res) {
+    setCartedItems([...res])
   }
 
   return (
-    <CartProvider updateCart={updateCartHandler}>
-        {!state && <Cart isCancelClicked={isCancelClickedHandler} />}
-        <Header cartedItems={cartedItems} isCartClicked={cartClickHandler}/>
+    <CartProvider updateCart={updateCartHandler} cartedItems={cartedItemsHandler}>
+        {!state && <Cart isCancelClicked={isCancelClickedHandler} cartedItems={cartedItems} />}
+        <Header cartedItemsCount={cartedItemsCount} isCartClicked={cartClickHandler}/>
         <Summary />
         <main>
           <Meals />

@@ -7,8 +7,8 @@ function CartProvider(props) {
 
     function addItemHandler(item) {
         ctx.items.push(item)
-        console.log(ctx.items)
         props.updateCart(ctx.items.length)
+        props.cartedItems(ctx.items)
     }
 
     function removeItemHandler(id) {}
