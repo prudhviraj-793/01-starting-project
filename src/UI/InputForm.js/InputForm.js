@@ -10,7 +10,7 @@ function InputForm(props) {
 
     function inputHandler(e) {
         e.preventDefault()
-        if (e.target.value > 0) {
+        if (e.target.value > 0 && e.target.value < 5) {
             setQuantity(e.target.value)
         }
     }
