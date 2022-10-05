@@ -5,28 +5,28 @@ function Meals() {
 
     let meals = [
         {
-            id: Math.random().toString(),
+            id: 'i1',
             name: 'pizza',
             description: 'mushroom with corn',
-            price: '$15'
+            price: 250
         },
         {
-            id: Math.random().toString(),
+            id: 'i2',
             name: 'Noodels',
             description: 'boneless chiken pieces',
-            price: '$10'
+            price: 80
         },
         {
-            id: Math.random().toString(),
+            id: 'i3',
             name: 'manchuria',
             description: 'chiken manchira with all ingridients',
-            price: '$15'
+            price: 50
         },
         {
-            id: Math.random().toString(),
+            id: 'i4',
             name: 'momos',
             description: 'fried chiken crunchy momos',
-            price: '$15'
+            price: 60
         }
     ]
 

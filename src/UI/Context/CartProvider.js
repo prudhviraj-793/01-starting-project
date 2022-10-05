@@ -1,21 +1,51 @@
-import { useContext } from "react"
+import { useState } from "react"
 import CartContext from "./cart-context"
 
 function CartProvider(props) {
 
-    const ctx = useContext(CartContext)
+    const [cartedItems, setCartedItems] = useState([])
 
-    function addItemHandler(item) {
-        ctx.items.push(item)
-        props.updateCart(ctx.items.length)
-        props.cartedItems(ctx.items)
+    function addItemHandler(addItem) {
+        
+        let hasItem = false
+
+        cartedItems.forEach((item, idx) => {
+            if (item.id === addItem.id) {
+                cartedItems[idx].amount = Number(addItem.amount) + Number(cartedItems[idx].amount)
+                hasItem = true
+            }
+        })
+
+        if (hasItem) {
+            setCartedItems([...cartedItems])
+        } else {
+            setCartedItems([...cartedItems, addItem])
+        }
+
     }
 
-    function removeItemHandler(id) {}
+    function removeItemHandler(id) {
+        
+        cartedItems.forEach((item, idx) => {
+            if (item.id === id && item.amount > 1 ) {
+                cartedItems[idx].amount = cartedItems[idx].amount - 1
+            } else if (item.id === id && item.amount === 1) {
+                cartedItems.pop(idx)
+            }
+        })
+
+        setCartedItems([...cartedItems])
+    }
+
+    let totalPrice = 0
+
+    cartedItems.forEach(item => {
+        totalPrice += (Number(item.price) * Number(item.amount))
+    })
 
     const cartContext = {
-        items: [],
-        totalAmount: 0,
+        items: cartedItems,
+        totalAmount: totalPrice,
         addItem: addItemHandler,
         removeItem: removeItemHandler
     }

@@ -1,12 +1,13 @@
-import { useState } from "react"
+import { useContext } from "react"
+import CartContext from "../UI/Context/cart-context"
 import Modal from "../UI/Modal/Modal"
 import './Cart.css'
 
 function Cart(props) {
 
-    const cartItems = props.cartedItems
+    const ctx = useContext(CartContext)
 
-    const [quantity, setQuantity] = useState(0)
+    const cartItems = ctx.items
 
     function cancelClickHandler(e) {
         e.preventDefault()
@@ -14,19 +15,17 @@ function Cart(props) {
     }
 
     function reduceItem(item) {
-        if (item.amount > 0) {
-            item.amount = item.amount - 1
-            setQuantity(item.amount)
-        }
+        ctx.removeItem(item.id)
     }
 
     return (
         <Modal>
             <div className="cart-items">
+                {cartItems.length === 0 && <p>Add Items to Cart</p>}
                 <ul>
                     {cartItems.map(item => {
                         return <li key={item.id}>
-                            {item.item} - {item.price} X {item.amount}
+                            {item.item} - Rs {item.price} X {item.amount}
                             <button onClick={() => reduceItem(item)}>-</button>
                             <button>+</button>
                         </li>
@@ -35,7 +34,7 @@ function Cart(props) {
             </div>
             <div className="total">
                 <span>Total Amount</span>
-                <span>$35</span>
+                <span>Rs {ctx.totalAmount} /-</span>
             </div>
             <div className="actions">
                 <button onClick={cancelClickHandler}>Cancel</button>
