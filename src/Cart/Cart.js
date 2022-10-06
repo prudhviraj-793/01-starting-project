@@ -18,6 +18,10 @@ function Cart(props) {
         ctx.removeItem(item.id)
     }
 
+    function increaseItem(item) {
+        ctx.addItem(item.id)
+    }
+
     return (
         <Modal>
             <div className="cart-items">
@@ -25,9 +29,9 @@ function Cart(props) {
                 <ul>
                     {cartItems.map(item => {
                         return <li key={item.id}>
-                            {item.item} - Rs {item.price} X {item.amount}
+                            {item.item} - Rs {item.price} x {item.amount}
                             <button onClick={() => reduceItem(item)}>-</button>
-                            <button>+</button>
+                            <button onClick={() => increaseItem(item)}>+</button>
                         </li>
                     })}
                 </ul>

@@ -7,7 +7,18 @@ function CartProvider(props) {
 
     function addItemHandler(addItem) {
         
-        let hasItem = false
+        if (typeof(addItem) === 'string') {
+
+            cartedItems.forEach((item, idx) => {
+                if (item.id === addItem && item.amount < 4) {
+                    cartedItems[idx].amount = Number(cartedItems[idx].amount) + 1
+                }
+            })
+
+            setCartedItems([...cartedItems])
+
+        } else {
+            let hasItem = false
 
         cartedItems.forEach((item, idx) => {
             if (item.id === addItem.id) {
@@ -20,6 +31,7 @@ function CartProvider(props) {
             setCartedItems([...cartedItems])
         } else {
             setCartedItems([...cartedItems, addItem])
+        }
         }
 
     }
